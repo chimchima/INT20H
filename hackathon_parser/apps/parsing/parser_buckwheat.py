@@ -102,18 +102,18 @@ def check(html, site_name, site_url):
         return parse_bigl(html, site_url)
 
 
-def parse():
+def parse(arr):
 
-    items = []
+    #items = []
     
     for site in SITES:
         html = get_html(site.url)
         if html.status_code == 200:
-            items.append(check(html.text, site.name, site.url))
+            arr.append(check(html.text, site.name, site.url))
         else:
             print(f'{site.name} error {str(html.status_code)}')
     
-    for item in items:
+    for item in arr:
         item.price = re.sub(r',', '.', item.price)
         item.price = re.sub(r'\D{2,}', '', item.price)
         item.price = float(item.price)
@@ -123,14 +123,15 @@ def parse():
         
         item.img_url = list(item.img_url)[0]
     
-    items.sort(key=lambda x: x.price, reverse=False)
+    arr.sort(key=lambda x: x.price, reverse=False)
     
-    return items
+    #return items
 
 
 def test():
 
-    items = parse()
+    items = []
+    parse(items)
     for item in items:
         for elem in item.__dir__():
             print(f'{elem}\n\n')
