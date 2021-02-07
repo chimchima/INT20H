@@ -136,5 +136,5 @@ STATICFILES_DIRS = (
     os.path.normpath(os.path.join(BASE_DIR, 'static/fonts/')),
     os.path.normpath(os.path.join(BASE_DIR, 'static/js/')),
 )
-STATIC_ROOT = os.path.normpath(os.path.join(BASE_DIR, 'assets'))
+STATIC_ROOT = os.path.normpath(os.path.join(BASE_DIR, 'staticfiles'))
 STATIC_URL = '/static/'
