@@ -11,6 +11,12 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os, sys
+import django_heroku
+
+
+# Activate Django-Heroku.
+django_heroku.settings(locals())
+
 
 PROJECT_ROOT = os.path.dirname(__file__)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) + '/hackathon_parser'
