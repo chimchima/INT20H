@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os, sys
 import django_heroku
+import dj_database_url
 
 
 # Activate Django-Heroku.
@@ -32,7 +33,8 @@ SECRET_KEY = '!f7j6lr(q@o1vi6^duh=64mw5ef1af0@yxzoo)sc2gjg47i-3b'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['0.0.0.0']
+#ALLOWED_HOSTS = ['0.0.0.0']
+ALLOWED_HOSTS = ['*']
 
 MIDDLEWARE_CLASSES = (
     # Simplified static file serving.
@@ -155,3 +157,6 @@ STATICFILES_DIRS = (
 #STATIC_ROOT = os.path.normpath(os.path.join(BASE_DIR, 'assets'))
 STATIC_ROOT = os.path.normpath(os.path.join(BASE_DIR, 'staticfiles'))
 STATIC_URL = '/static/'
+
+db_from_env = dj_database_url.config()
+DATABASES['default'].update(db_from_env)
